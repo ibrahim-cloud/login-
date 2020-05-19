@@ -7,7 +7,7 @@ $username = "";
 $email = '';
 $Adminname="";
 $errors = array();
-$db =mysqli_connect ('localhost','root','','registration');
+$db =mysqli_connect ('localhost','root','','k');
 
 if(isset($_POST['register'])) {
     $username = mysqli_real_escape_string($db,$_POST['username']);
@@ -29,7 +29,7 @@ if(isset($_POST['register'])) {
     }
     if (count($errors) == 0){
         $password = md5($password_1);
-        $sql = "INSERT INTO `users` (username,email,password)
+        $sql = "INSERT INTO `client` (NOM,EMAIL,PASSWORD)
               VALUES ('$username','$email','$password')";
               mysqli_query($db,$sql);
               $_SESSION ['username'] = $username;
@@ -54,7 +54,7 @@ if (isset($_POST['login'])){
     }
     if(count($errors)== 0){
         $password = md5 ($password);
-        $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+        $query = "SELECT * FROM client WHERE NOM='$username' AND PASSWORD='$password'";
         $result = mysqli_query ($db,$query);
         if (mysqli_num_rows ($result) == 1){
             ///log user in
@@ -80,7 +80,7 @@ if (isset($_POST['admin'])){
     }
     if(count($errors)== 0){
         //  $Adminname = md5 ($passwordAdmin);
-        $fas = "SELECT * FROM admins WHERE Adminname='$Adminname' AND passwordAdmin='$passwordAdmin'";
+        $fas = "SELECT * FROM admin WHERE MATRICULE='$Adminname' AND PASSWORD='$passwordAdmin'";
         $res = mysqli_query ($db,$fas);
         if (mysqli_num_rows ($res) == 1){
             $_SESSION ['Adminname'] = $Adminname;

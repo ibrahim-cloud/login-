@@ -1,7 +1,11 @@
 
-<?php include ('server.php');?>
+<?php include ('server.php');
+// session_start();
+// if ( isset($_SESSION ['Adminname'])){
+// echo "none"
+// }
 
-
+ ?> 
 
 <!-- :::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 <!DOCTYPE html>
